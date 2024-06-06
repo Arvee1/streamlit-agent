@@ -1,4 +1,4 @@
-from langchain.agents import ConversationalChatAgent, AgentExecutor
+from langchain.agents import ConversationalChatAgent, AgentExecutor, AgentType, initialize_agent, load_tools
 from langchain.memory import ConversationBufferMemory
 from langchain_community.callbacks import StreamlitCallbackHandler
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
@@ -45,7 +45,8 @@ if prompt := st.chat_input(placeholder="Who won the Women's U.S. Open in 2018?")
 
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
     # tools = [DuckDuckGoSearchRun(name="Search")]
-    tools = [GoogleSearchRun(name="Search")]
+    # tools = [GoogleSearchRun(name="Search")]
+    tools = load_tools(["google-serper"], llm=llm)
     chat_agent = ConversationalChatAgent.from_llm_and_tools(llm=llm, tools=tools)
     executor = AgentExecutor.from_agent_and_tools(
         agent=chat_agent,

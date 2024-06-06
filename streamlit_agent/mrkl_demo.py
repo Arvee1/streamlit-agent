@@ -6,6 +6,7 @@ from langchain import hub
 from langchain.agents import AgentExecutor, Tool, create_react_agent
 from langchain.chains import LLMMathChain
 from langchain_community.callbacks import StreamlitCallbackHandler
+from langchain_community.utilities import GoogleSearchAPIWrapper
 from langchain_community.utilities import DuckDuckGoSearchAPIWrapper, SQLDatabase
 from langchain_core.runnables import RunnableConfig
 from langchain_experimental.sql import SQLDatabaseChain
@@ -45,7 +46,8 @@ else:
 
 # Tools setup
 llm = OpenAI(temperature=0, openai_api_key=openai_api_key, streaming=True)
-search = DuckDuckGoSearchAPIWrapper()
+# search = DuckDuckGoSearchAPIWrapper()
+search = GoogleSearchAPIWrapper()
 llm_math_chain = LLMMathChain.from_llm(llm)
 
 # Make the DB connection read-only to reduce risk of injection attacks

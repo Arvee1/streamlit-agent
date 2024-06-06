@@ -47,7 +47,8 @@ if prompt := st.chat_input(placeholder="Who won the Women's U.S. Open in 2018?")
     # tools = [DuckDuckGoSearchRun(name="Search")]
     # tools = [GoogleSearchRun(name="Search")]
     # tools = load_tools(["google-serper"], llm=llm)
-    tools = load_tools(["searchapi"], llm=llm)
+    # tools = load_tools(["searchapi"], llm=llm)
+    tools = load_tools(["serpapi"], llm=llm)
     chat_agent = ConversationalChatAgent.from_llm_and_tools(llm=llm, tools=tools)
     executor = AgentExecutor.from_agent_and_tools(
         agent=chat_agent,

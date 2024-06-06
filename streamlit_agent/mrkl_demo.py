@@ -46,8 +46,8 @@ else:
 
 # Tools setup
 llm = OpenAI(temperature=0, openai_api_key=openai_api_key, streaming=True)
-search = DuckDuckGoSearchAPIWrapper()
-# search = GoogleSearchAPIWrapper()
+# search = DuckDuckGoSearchAPIWrapper()
+search = GoogleSearchAPIWrapper()
 llm_math_chain = LLMMathChain.from_llm(llm)
 
 # Make the DB connection read-only to reduce risk of injection attacks

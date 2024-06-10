@@ -44,8 +44,8 @@ if prompt := st.chat_input(placeholder="Who won the Women's U.S. Open in 2018?")
         st.stop()
 
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
-    tools = [DuckDuckGoSearchRun(name="Search")]
-    # tools = [GoogleSearchRun(name="Search")]
+    # tools = [DuckDuckGoSearchRun(name="Search")]
+    tools = [GoogleSearchRun(name="Search")]
     # tools = load_tools(["google-serper"], llm=llm)
     # tools = load_tools(["searchapi"], llm=llm)
     # tools = load_tools(["serpapi"], llm=llm)
